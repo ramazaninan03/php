@@ -1,58 +1,3 @@
-<?php 
-if(isset($_POST["submit"])){
-    $bedrag = $_POST['bedrag'];
-    $rente = $_POST['rente'];
-    $rente = $rente / 100;
-
-    if($bedrag==0 && $rente==0){
-        echo "Geen waare ingevuld";
-
-    }else{
-        $knop = $_POST["knop"];
-        if($knop=='10jaar'){
-            echo "<table border=1>";
-            for($i=1;$i<=10;$i++){
-                $bedrag += ($bedrag * $rente);
-                echo "
-                <tr>
-                    <th>Jaar " .$i." </th>
-                    <th>".$bedrag."</th></tr>";
-            }
-                echo "</table>";
-            }
-    }
-
-    if($knop=='verdubbeld'){
-        $i=1;
-        $controleBedrag = $bedrag;
-        while($bedrag <= $controleBedrag * 2){
-            $bedrag += $bedrag * $rente;
-            echo "<table border=1>";
-            echo "
-                <tr>
-                    <th>Jaar " .$i." </th>
-                    <th>".$bedrag."</th>
-                </tr>";
-
-            echo "</table>";
-            $i++;
-        }
-
-        // for ($i = 1; $bedrag <= $controleBedrag * 2; $i++)
-        // {
-        //     $bedrag += $bedrag * $rente;
-        //     echo "<table border=1>";
-        //     echo "
-        //         <tr>
-        //             <th>Jaar " .$i." </th>
-        //             <th>".$bedrag."</th>
-        //         </tr>";
-
-        //     echo "</table>";
-        // }
-    }
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -105,9 +50,9 @@ if(isset($_POST["submit"])){
     <div class="main">
     
     <label for="bedrag"> Ingelegd Bedrag:</label><br>
-    <input type="text" name="bedrag" value="" required ><br>
+    <input type="number" name="bedrag" value="" min="0" required ><br>
     <label for="rentepercentage">Rentepercentage:</label><br>
-    <input type="text" name="rente" value=""  required ><br><br>
+    <input type="number" name="rente" value="" min="0"  required ><br><br>
 
     <input type="radio" id="html" name="knop" checked value="10jaar">
     <label for="html">Eindbedrag na 10 jaar</label><br>
@@ -119,6 +64,62 @@ if(isset($_POST["submit"])){
     </div>
 
     </form>
+
+    <?php 
+if(isset($_POST["submit"])){
+    $bedrag = $_POST['bedrag'];
+    $rente = $_POST['rente'];
+    $rente = $rente / 100;
+
+    if($bedrag==0 && $rente==0){
+        echo "Geen waare ingevuld";
+
+    }else{
+        $knop = $_POST["knop"];
+        if($knop=='10jaar'){
+            echo "<table border=1>";
+            for($i=1;$i<=10;$i++){
+                $bedrag += ($bedrag * $rente);
+                echo "
+                <tr>
+                    <th>Jaar " .$i." </th>
+                    <th>".round($bedrag, 2)."</th></tr>";
+            }
+                echo "</table>";
+            }
+    }
+
+    if($knop=='verdubbeld'){
+        $i=1;
+        $controleBedrag = $bedrag;
+        while($bedrag <= $controleBedrag * 2){
+            $bedrag += $bedrag * $rente;
+            echo "<table border=1>";
+            echo "
+                <tr>
+                    <th>Jaar " .$i." </th>
+                    <th>".round($bedrag, 2)."</th>
+                </tr>";
+
+            echo "</table>";
+            $i++;
+        }
+
+        // for ($i = 1; $bedrag <= $controleBedrag * 2; $i++)
+        // {
+        //     $bedrag += $bedrag * $rente;
+        //     echo "<table border=1>";
+        //     echo "
+        //         <tr>
+        //             <th>Jaar " .$i." </th>
+        //             <th>".$bedrag."</th>
+        //         </tr>";
+
+        //     echo "</table>";
+        // }
+    }
+}
+?>
 
 </body>
 </html>

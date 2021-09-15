@@ -11,10 +11,10 @@
 <form method="post">
 
   <label for="lengte">Lengte:</label>
-  <input type="text" id="lengte" name="lengte" ><br><br>
+  <input type="text" id="lengte" name="lengte" required ><br><br>
 
   <label for="breedte">Breedte:</label>
-  <input type="text" id="breedte" name="breedte" ><br><br>
+  <input type="text" id="breedte" name="breedte" required ><br><br>
 
   <input type="submit" name="submit" value="Bereken">
 
