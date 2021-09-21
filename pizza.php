@@ -120,7 +120,7 @@
     <input type="number" id="html" name="pizzafunghi" value="0" min="0"><br><br>
 
     <label for="pizzamarina">Pizza Marina  13,95</label>
-    <input type="number" id="html" name="pizzamarina" value="0" min="0"><br><br>
+    <input type="number" id="html" name="pizzamarina" value="0" mi n="0"><br><br>
 
     <label for="pizzahawai">Pizza  Hawai  11,50</label>
     <input type="number" name="pizzahawai" value="0" min="0"><br><br>
@@ -148,7 +148,7 @@
   <label for="lname">Plaats:</label><br>
   <input type="text"  name="plaats" value="" required ><br>
   <label for="fname">Besteldatum:</label><br>
-  <input type="date"  name="besteldatum" value="" required ><br>
+  <input type="date"  name="besteldatum"min="<?=date('Y-m-d'); ?>" value="" required ><br>
   <label for="lname">Bezorgen of afhalen:</label><br>
   <input type="radio" name="bezorgkeuze" value="bezorgen">
   <label for="bezorgkeuze">Bezorgen</label><br>
